@@ -6,7 +6,7 @@ import { Message } from '@/types';
 
 export const ChatInput = () => {
   const { onSendMessage } = useMessages();
-  const { getLLMPrediction } = useLLMPrediction();
+  const { getLLMPrediction, isBotTyping } = useLLMPrediction();
   const handleSendMessage = async (value: string) => {
     const message: Message = {
       id: uuidv4(),
@@ -20,6 +20,7 @@ export const ChatInput = () => {
 
   return (
     <Textarea
+      disabled={isBotTyping}
       className={'mb-2 resize-none max-w-3xl mx-auto'}
       placeholder={'Type a message...'}
       spellCheck={false}

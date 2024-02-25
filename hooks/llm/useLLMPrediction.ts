@@ -19,8 +19,9 @@ const getLLMPredictionFetcher = async (query: string): Promise<Message> => {
 };
 
 export const useLLMPrediction = () => {
-  const { mutateAsync: getLLMPredictionMutation } = useMutation({
+  const { mutateAsync: getLLMPredictionMutation, isPending } = useMutation({
     mutationFn: getLLMPredictionFetcher,
   });
-  return { getLLMPrediction: getLLMPredictionMutation };
+  console.log(isPending);
+  return { getLLMPrediction: getLLMPredictionMutation, isBotTyping: isPending };
 };
