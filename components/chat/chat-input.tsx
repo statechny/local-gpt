@@ -1,19 +1,21 @@
 'use client';
+import { v4 as uuidv4 } from 'uuid';
 import { Textarea } from '@/components/ui/textarea';
-import { useMessages } from '@/hooks';
+import { useMessages, useLLMPrediction } from '@/hooks';
 import { Message } from '@/types';
-import { uuid } from 'uuidv4';
-import { useEffect } from 'react';
 
 export const ChatInput = () => {
   const { onSendMessage } = useMessages();
-  const handleSendMessage = (value: string) => {
+  const { getLLMPrediction } = useLLMPrediction();
+  const handleSendMessage = async (value: string) => {
     const message: Message = {
-      id: uuid(),
+      id: uuidv4(),
       author: 'user',
       text: value,
     };
-    onSendMessage(message);
+    await onSendMessage(message);
+    const prediction = await getLLMPrediction(value);
+    return onSendMessage(prediction);
   };
 
   return (
