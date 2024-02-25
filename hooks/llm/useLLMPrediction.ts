@@ -22,6 +22,5 @@ export const useLLMPrediction = () => {
   const { mutateAsync: getLLMPredictionMutation, isPending } = useMutation({
     mutationFn: getLLMPredictionFetcher,
   });
-  console.log(isPending);
   return { getLLMPrediction: getLLMPredictionMutation, isBotTyping: isPending };
 };
