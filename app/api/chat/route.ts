@@ -10,7 +10,7 @@ export async function POST(req: Request) {
     const { query } = await req.json();
 
     const model = new ChatOllama({
-      baseUrl: 'http://localhost:11434',
+      baseUrl: 'http://host.docker.internal:11434',
       model: 'mistral',
     });
 
