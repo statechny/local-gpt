@@ -21,7 +21,7 @@ export const ChatInput = () => {
   return (
     <Textarea
       disabled={isBotTyping}
-      className={'mb-2 resize-none max-w-3xl mx-auto'}
+      className={'my-4 resize-none max-w-3xl mx-auto'}
       placeholder={'Type a message...'}
       spellCheck={false}
       onKeyUp={(e) => {

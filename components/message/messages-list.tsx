@@ -13,7 +13,7 @@ export const MessagesList = () => {
   }, [messages?.length]);
 
   return (
-    <div className={'flex-1 overflow-auto'} ref={chatElement}>
+    <div className={'flex-1 overflow-auto border-b'} ref={chatElement}>
       {messages?.map(({ id, text, author }) => (
         <MessageItem key={id} message={text} author={author} />
       ))}
